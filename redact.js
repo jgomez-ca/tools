@@ -32,7 +32,7 @@ document.getElementById('redactButton').addEventListener('click', function() {
 
     // Redacts the local part.
     let redactedLocal = localPart;
-    if (localPart.length > 2) {
+    if (localPart.length > 1) {
       console.log(localPart.length);
       redactedLocal = localPart.charAt(0) + "*".repeat(localPart.length - 2) + localPart.charAt(localPart.length - 1);
       console.log(redactedLocal);
@@ -53,7 +53,7 @@ document.getElementById('redactButton').addEventListener('click', function() {
     // Redact the domain name.
     let redactedDomain = domainName;
     if (domainName.length > 3) {
-      redactedDomain = domainName.substring(0, 2) + "*".repeat(domainName.length - 3) + domainName.charAt(domainName.length - 1);
+      redactedDomain = domainName.substring(0, 1) + "*".repeat(domainName.length - 3) + domainName.charAt(domainName.length - 1);
     } else if (domainName.length > 1) {
       redactedDomain = domainName.charAt(0) + "*".repeat(domainName.length - 2) + domainName.charAt(domainName.length - 1);
     }
