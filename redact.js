@@ -55,7 +55,7 @@ document.getElementById('redactButton').addEventListener('click', function() {
     if (domainName.length > 3) {
       redactedDomain = domainName.substring(0, 1) + "*".repeat(domainName.length - 3) + domainName.charAt(domainName.length - 1);
     } else if (domainName.length > 1) {
-      redactedDomain = domainName.charAt(0) + "*".repeat(domainName.length - 2) + domainName.charAt(domainName.length - 1);
+      redactedDomain = domainName.charAt(0) + "*".repeat(domainName.length - 1) + domainName.charAt(domainName.length - 1);
     }
 
     return redactedLocal + "@" + redactedDomain + tld;
