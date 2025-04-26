@@ -23,12 +23,14 @@ document.getElementById('redactButton').addEventListener('click', function() {
   function redactEmail(email) {
     // Split the email into local and domain parts.
     const parts = email.split("@");
-    console.log(parts);
+    console.log('parts of the email -> ', parts);
     if (parts.length !== 2) {
       return "Invalid email format.";
     }
     const localPart = parts[0];
+    console.log('Local Part -> ', localPart);
     const domainFull = parts[1];
+    console.log('Domain name -> ', domainFull);
 
     // Redacts the local part.
     let redactedLocal = localPart;
