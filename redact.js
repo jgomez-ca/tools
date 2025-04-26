@@ -1,6 +1,6 @@
 document.getElementById('redactButton').addEventListener('click', function() {
     const email = document.getElementById('emailInput').value.trim();
-
+    console.log('Captured Email -> ', email);
     // Basic validation check for empty input.
     if (!email) {
       alert("Please enter an email address.");
@@ -35,7 +35,7 @@ document.getElementById('redactButton').addEventListener('click', function() {
     if (localPart.length > 1) {
       console.log(localPart.length);
       redactedLocal = localPart.charAt(0) + "*".repeat(localPart.length - 2) + localPart.charAt(localPart.length - 1);
-      console.log(redactedLocal);
+      console.log(''redactedLocal);
     }
 
     // Separate the domain into the domain name and TLD.
