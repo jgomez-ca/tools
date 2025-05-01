@@ -42,7 +42,7 @@ function redactEmail(email) {
     redactedLocal = localPart.charAt(0) + "*".repeat(localPart.length) + localPart.charAt(localPart.length - 1); */
 
   // The folloging line redacts the email COMPLETELY
-    redactedLocal = "*".repeat(localPart.length);
+    redactedLocal = localPart.charAt(0) + "*".repeat(localPart.length);
     console.log('localPart redactado->', redactedLocal);
   }
 
@@ -70,7 +70,7 @@ function redactEmail(email) {
     /*the following line redacts the email between the first and last chars
     redactedDomain = domainName.charAt(0) + "*".repeat(domainName.length - 2) + domainName.charAt(domainName.length - 1);
   }*/
-  redactedDomain = "*".repeat(domainName.length);
+  redactedDomain = domainName.charAt(0) + "*".repeat(domainName.length);
 
   return redactedLocal + "@" + redactedDomain + tld;
 }
