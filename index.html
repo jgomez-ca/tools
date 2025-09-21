@@ -19,7 +19,7 @@
     <div class="container py-4 rounded bg-light shadow">
         <div class="row g-4">
             <!-- Redact email -->
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Redact email</h5>
@@ -28,7 +28,7 @@
                                 <input class="p-2 m-3 form-control" type="email" id="emailInput" placeholder="Enter the email">
                             </div>
                             <div class="col-sm">
-                                <button class="p-2 m-3 buttonColor" id="redactButton">redact</button>
+                                <button class="p-2 m-3 buttonColor" id="redactButton">Redact Email</button>
                             </div>
                         </div>
                             <p><span class="fw-bold p-2 m-3" id="redacted"></span></p>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <!-- Password Generator -->
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Password Generator</h5>
@@ -45,11 +45,12 @@
                         <input class="p-2 m-3" type="number" id="length" min="14" max="120" value="14" />
                         <button class="p-2 m-3 buttonColor" id="generateBtn">Generate Password</button>
                         <p id="passwordOutput"></p>
+                        <hr>
                         <p id="passwordOutputHalf"></p>
                     </div>
                 </div>
             </div>
-            <!-- Card 3 -->
+            <!-- Card 3 
             <div class="col-12 col-md-4">
                 <div class="card h-100">
                     <div class="card-body">
@@ -57,7 +58,7 @@
                         <p class="card-text">Content for card 3 goes here.</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
             
         </div>
     </div>
@@ -67,5 +68,4 @@
     <script src="./js/passgen.js"></script>
 
 </body>
-
 </html>
