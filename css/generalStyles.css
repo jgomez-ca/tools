@@ -21,3 +21,19 @@ body {
     color: #ffffff;
     font-weight: bold;
 }
+
+/* Styles for the reminder calculator */
+.reminder-row {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 8px 0;
+        border-bottom: 2px solid #4b427a;
+    }
+
+    .reminder-row:last-child {
+        border-bottom: none;
+    }
+
+    .date-output {
+        font-weight: bold;
+    }
