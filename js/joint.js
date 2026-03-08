@@ -55,14 +55,22 @@ function redactEmail(email) {
   let redactedTld = tld;
   redactedTld = "*".repeat(tld.length - 1);
 
-  fullRE = "\n-> " + redactedLocal + "@" + redactedDomain + "." + redactedTld;
+  fullRE = "Full Redaction:\n-> " + redactedLocal + "@" + redactedDomain + "." + redactedTld + "\n\n";
 
-  optionTwoRE = "\n-> " + localPart.charAt(0) + "*".repeat(Math.max(0, localPart.length - 2)) + localPart.charAt(localPart.length - 1) + "@" + domainName.charAt(0) + "*".repeat(Math.max(0, domainName.length - 2)) + domainName.charAt(domainName.length - 1) + tld;
+  optionTwoRE = "Showing more:\n-> " + localPart.charAt(0) + "*".repeat(Math.max(0, localPart.length - 2)) + localPart.charAt(localPart.length - 1) + "@" + domainName.charAt(0) + "*".repeat(Math.max(0, domainName.length - 2)) + domainName.charAt(domainName.length - 1) + tld + "\n\n";
 
-   optionThreeRE = "\n-> " + localPart.charAt(0) + "*".repeat(Math.max(0, localPart.length - 1)) + "@" + domainName.charAt(0) + "*".repeat(Math.max(0, domainName.length - 1)) + tld;
+   optionThreeRE = "Showing 1st + TLD:\n-> " + localPart.charAt(0) + "*".repeat(Math.max(0, localPart.length - 1)) + "@" + domainName.charAt(0) + "*".repeat(Math.max(0, domainName.length - 1)) + tld + "\n\n";
 
   totalREOptions = fullRE + optionThreeRE + optionTwoRE;
   return totalREOptions;
+
+
+/*   innerHTML =
+        `<strong>Original Price:</strong> $${price.toFixed(2)}<br>
+         <strong>Federal Tax (GST):</strong> $${federalTax.toFixed(2)}<br>
+         <strong>Provincial Tax:</strong> $${provincialTax.toFixed(2)}<br>
+         <strong>Total:</strong> $${total.toFixed(2)}`; */
+
 }
 
 // PASSWORD GENERATOR
@@ -105,12 +113,23 @@ generatePassBtn.addEventListener("click", () => {
   outputBox.classList.remove("hidden");
 });
 
-copyBtn.addEventListener("click", () => {
+// Copies FULL password
+copyPassBtn.addEventListener("click", () => {
   const password = passwordOutput.textContent;
 
   navigator.clipboard.writeText(password).then(() => {
-    copyBtn.textContent = "Copied!";
-    setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+    copyPassBtn.textContent = "Copied!";
+    setTimeout(() => (copyPassBtn.textContent = "Copy Full Password"), 1500);
+  });
+});
+
+// Copies HALF password
+copyHalfBtn.addEventListener("click", () => {
+  const passwordHalf = passwordOutputHalf.textContent;
+
+  navigator.clipboard.writeText(passwordHalf).then(() => {
+    copyHalfBtn.textContent = "Copied!";
+    setTimeout(() => (copyHalfBtn.textContent = "Copy Half Password"), 1500);
   });
 });
 
@@ -139,11 +158,12 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     const total = price + federalTax + provincialTax;
 
     document.getElementById('taxOutput').innerHTML =
-        `<strong>Original Price:</strong> $${price.toFixed(2)}<br>
-         <strong>Federal Tax (GST):</strong> $${federalTax.toFixed(2)}<br>
-         <strong>Provincial Tax:</strong> $${provincialTax.toFixed(2)}<br>
-         <strong>Total:</strong> $${total.toFixed(2)}`;
+        `<strong>Original Price:</strong>  $${price.toFixed(2)}<br>
+         <strong>Federal Tax (GST):</strong>  $${federalTax.toFixed(2)}<br>
+         <strong>Provincial Tax:</strong  $${provincialTax.toFixed(2)}<br>
+         <strong>Total:</strong>  $${total.toFixed(2)}`;
 });
+
 
 // Reminder Calculator
  const reminderOffsets = [60, 30, 15, 7, 3, 1];

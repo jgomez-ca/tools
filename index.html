@@ -18,13 +18,14 @@
 <body>
     <div class="container py-4 rounded bg-light shadow">
         <div class="row g-4">
+           
             <!-- Redact email -->
             <div class="col-12 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Redact email</h5>
-                            <input class="p-2 m-3" type="email" id="emailInput" placeholder="Enter the email">
-                            <button class="p-2 m-3 buttonColor" id="redactButton">Redact Email</button>
+                            <input class="p-2 m-3 largo" type="email" id="emailInput" placeholder="Enter the email">
+                            <button class="p-2 m-3" id="redactButton">Redact Email</button>
                             <p><span class="p-2 m-3" id="redacted"></span></p>
                     </div>
                 </div>
@@ -36,16 +37,16 @@
                     <div class="card-body">
                         <h5 class="card-title">Password Generator</h5>
                         <label for="length">Password Length (8–128):</label>
-                        <input class="p-2 m-3" type="number" id="length" min="8" max="128" value="8" />
-                        <button class="p-2 m-3 buttonColor" id="generatePassBtn">Generate Password</button>
+                        <input class="p-2 m-3 largo" type="number" id="length" min="8" max="128" value="8" />
+                        <button class="p-2 m-3" id="generatePassBtn">Generate Password</button>
                         <div id="outputPassBox" class="hidden">
                             <p id="passwordOutput"></p>
-                            <button id="copyPassBtn">Copy Full Password</button>
+                            <button class="p-2 m-3" id="copyPassBtn">Copy Full Password</button>
                         </div>
                         <hr>
                         <div id="outputPassBox" class="hidden">
                             <p id="passwordOutputHalf"></p>
-                            <button id="copyPassBtn">Copy Half Password</button>
+                            <button class="p-2 m-3" id="copyHalfBtn">Copy Half Password</button>
                         </div>
 
                     </div>
@@ -58,7 +59,7 @@
                     <div class="card-body">
                         <h5 class="card-title">ON Tax calculator</h5>
                         <label for="province">Province:</label>
-                        <select class="p-2 m-3" id="province">
+                        <select class="p-2 m-3 largo" id="province">
                             <option value="ON">Ontario</option>
                             <option value="QC">Quebec</option>
                             <option value="BC">British Columbia</option>
@@ -74,29 +75,37 @@
                             <option value="NU">Nunavut</option>
                         </select>
                         <div>
-                            <label for="price">Price:</label>
-                            <input class="p-2 m-3" type="number" id="price"/>
+                            <label for="price">Price:
+                                <input class="p-2 m-3 largo-price" type="number" id="price"/>
+                            </label>
                         </div>
-                        <button class="p-2 m-3 buttonColor" id="calculateBtn">Calculate Tax</button>
+                        <button class="p-2 m-3" id="calculateBtn">Calculate Tax</button>
                         <p id="taxOutput"></p>
                     </div>
                 </div>
             </div>
+
             <!-- Reminder calculator -->
             <div class="col-12 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">When were they sent?</h5>
                         <label>Expiration Date:</label>
-                        <input type="date" id="expirationDate">
+                        <input class="p-2 m-3 largo" type="date" id="expirationDate">
                         
-                        <div id="reminders"></div>
-                        <button class="p-2 m-3 buttonColor"id="generateText">Generate Raw Text Output</button>
-                        <textarea id="outputBox" placeholder="Your reminder dates will appear here..."></textarea>
-                        <button class="p-2 m-3 buttonColor" id="copyText">Copy to Clipboard</button>
+                        <div class="reminder-container" id="reminders">
+                            <!-- Reminder calculator -->
+                        </div>
+                        
+                        <button class="p-2 m-3" id="generateText">Generate Raw Text Output</button>
+                        
+                        <textarea class="box-style" id="outputBox" placeholder="Your reminder dates will appear here..."></textarea>
+                       
+                        <button class="p-2 m-3" id="copyText">Copy to Clipboard</button>
                     </div>
                 </div>
             </div>
+ 
             <!-- NEW ONE -->
             <div class="col-12 col-md-6">
                 <div class="card h-100">
@@ -105,6 +114,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- NEW ONE -->
             <div class="col-12 col-md-6">
                 <div class="card h-100">
