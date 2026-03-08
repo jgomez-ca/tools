@@ -44,6 +44,11 @@ button:hover {
     color: #4b427a;
 }
 
+/* Styles for Pass Generator */
+#outputPassBox {
+    width: 100%;
+}
+
 
 /* Styles for the reminder calculator */
 .reminder-container {
