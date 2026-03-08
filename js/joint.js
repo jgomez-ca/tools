@@ -1,72 +1,4 @@
-// Password Generator
-document.getElementById("generateBtn").addEventListener("click", () => {
-  const length = parseInt(document.getElementById("length").value);
-  const output = document.getElementById("passwordOutput");
-
-  if (isNaN(length) || length < 14 || length > 120) {
-    output.textContent = "Please enter a length between 14 and 120.";
-    return;
-  }
-
-  const lower = "abcdefghijklmnopqrstuvwxyz";
-  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const numbers = "0123456789";
-  const symbolsFull = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
-  const symbolsHalf = "!@#$%^&*()";
-
-  const allChars = lower + upper + numbers + symbolsFull;
-  const halfChars = lower + upper + numbers + symbolsHalf;
-
-  let passwordFull = "";
-  let passwordHalf = "";
-
-  for (let i = 0; i < length; i++) {
-    const randomChar = allChars[Math.floor(Math.random() * allChars.length)];
-    passwordFull += randomChar;
-  }
- //output.textContent = passwordFull;
-  document.getElementById("passwordOutput").textContent = "\nFull: " + passwordFull;
-
-  
-  for (let i = 0; i < length; i++) {
-    const randomChar = halfChars[Math.floor(Math.random() * halfChars.length)];
-    passwordHalf += randomChar;
-  }
-  document.getElementById("passwordOutputHalf").textContent = "\nHalf: " + passwordHalf;
-
-});
-
-// Tax Calculator
-document.getElementById('calculateBtn').addEventListener('click', function() {
-    const price = parseFloat(document.getElementById('price').value);
-    const province = document.getElementById('province').value;
-
-    if (isNaN(price) || price < 0) {
-        document.getElementById('taxOutput').textContent = "Please enter a valid price.";
-        return;
-    }
-
-    // Federal GST is 5% everywhere
-    const federalTaxRate = 0.05;
-
-    // Provincial tax rates (approximate, for demo)
-    const provincialRates = {
-        ON: 0.08, QC: 0.09975, BC: 0.07, AB: 0, SK: 0.06, MB: 0.07,
-        NL: 0.10, NB: 0.10, NS: 0.10, PE: 0.10, NT: 0, YK: 0, NU: 0
-    };
-
-    const federalTax = price * federalTaxRate;
-    const provincialTax = price * (provincialRates[province] || 0);
-    const total = price + federalTax + provincialTax;
-
-    document.getElementById('taxOutput').innerHTML =
-        `<strong>Original Price:</strong> $${price.toFixed(2)}<br>
-         <strong>Federal Tax (GST):</strong> $${federalTax.toFixed(2)}<br>
-         <strong>Provincial Tax:</strong> $${provincialTax.toFixed(2)}<br>
-         <strong>Total:</strong> $${total.toFixed(2)}`;
-});
-
-// Email Redactor
+// EMAIL REDACTOR
 document.getElementById('redactButton').addEventListener('click', function() {
     const email = document.getElementById('emailInput').value.trim();
 
@@ -132,6 +64,86 @@ function redactEmail(email) {
   totalREOptions = fullRE + optionThreeRE + optionTwoRE;
   return totalREOptions;
 }
+
+// PASSWORD GENERATOR
+const generatePassBtn = document.getElementById("generatePassBtn");
+const copyPassBtn = document.getElementById("copyPassBtn");
+const outputPassBox = document.getElementById("outputPassBox");
+const passwordOutput = document.getElementById("passwordOutput");
+const passwordOutputHalf = document.getElementById("passwordOutputHalf");
+
+generatePassBtn.addEventListener("click", () => {
+  const length = parseInt(document.getElementById("length").value);
+
+  if (isNaN(length) || length < 8 || length > 128) {
+    passwordOutput.textContent = "Please enter a valid length (8–128).";
+    outputBox.classList.remove("hidden");
+    return;
+  }
+
+  const lower = "abcdefghijklmnopqrstuvwxyz";
+  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numbers = "0123456789";
+  const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
+  const symbolsHalf = "!@#$%^&*()";
+
+
+  const allChars = lower + upper + numbers + symbols;
+  const halfChars = lower + upper + numbers + symbolsHalf;
+
+  let password = "";
+  let passwordHalf = "";
+
+
+  for (let i = 0; i < length; i++) {
+    password += allChars[Math.floor(Math.random() * allChars.length)];
+    passwordHalf += halfChars[Math.floor(Math.random() * halfChars.length)];
+  }
+
+  passwordOutput.textContent = password;
+  passwordOutputHalf.textContent = passwordHalf;
+  outputBox.classList.remove("hidden");
+});
+
+copyBtn.addEventListener("click", () => {
+  const password = passwordOutput.textContent;
+
+  navigator.clipboard.writeText(password).then(() => {
+    copyBtn.textContent = "Copied!";
+    setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+  });
+});
+
+
+// Tax Calculator
+document.getElementById('calculateBtn').addEventListener('click', function() {
+    const price = parseFloat(document.getElementById('price').value);
+    const province = document.getElementById('province').value;
+
+    if (isNaN(price) || price < 0) {
+        document.getElementById('taxOutput').textContent = "Please enter a valid price.";
+        return;
+    }
+
+    // Federal GST is 5% everywhere
+    const federalTaxRate = 0.05;
+
+    // Provincial tax rates (approximate, for demo)
+    const provincialRates = {
+        ON: 0.08, QC: 0.09975, BC: 0.07, AB: 0, SK: 0.06, MB: 0.07,
+        NL: 0.10, NB: 0.10, NS: 0.10, PE: 0.10, NT: 0, YK: 0, NU: 0
+    };
+
+    const federalTax = price * federalTaxRate;
+    const provincialTax = price * (provincialRates[province] || 0);
+    const total = price + federalTax + provincialTax;
+
+    document.getElementById('taxOutput').innerHTML =
+        `<strong>Original Price:</strong> $${price.toFixed(2)}<br>
+         <strong>Federal Tax (GST):</strong> $${federalTax.toFixed(2)}<br>
+         <strong>Provincial Tax:</strong> $${provincialTax.toFixed(2)}<br>
+         <strong>Total:</strong> $${total.toFixed(2)}`;
+});
 
 // Reminder Calculator
  const reminderOffsets = [60, 30, 15, 7, 3, 1];

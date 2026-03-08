@@ -29,20 +29,29 @@
                     </div>
                 </div>
             </div>
+
             <!-- Password Generator -->
             <div class="col-12 col-md-6">
                 <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">Password Generator</h5>
-                        <label for="length">Password Length:</label>
-                        <input class="p-2 m-3" type="number" id="length" min="14" max="120" value="14" />
-                        <button class="p-2 m-3 buttonColor" id="generateBtn">Generate Password</button>
-                        <p id="passwordOutput"></p>
+                        <label for="length">Password Length (8–128):</label>
+                        <input class="p-2 m-3" type="number" id="length" min="8" max="128" value="8" />
+                        <button class="p-2 m-3 buttonColor" id="generatePassBtn">Generate Password</button>
+                        <div id="outputPassBox" class="hidden">
+                            <p id="passwordOutput"></p>
+                            <button id="copyPassBtn">Copy Full Password</button>
+                        </div>
                         <hr>
-                        <p id="passwordOutputHalf"></p>
+                        <div id="outputPassBox" class="hidden">
+                            <p id="passwordOutputHalf"></p>
+                            <button id="copyPassBtn">Copy Half Password</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
             <!-- Tax Calculator -->
             <div class="col-12 col-md-6">
                 <div class="card h-100">
