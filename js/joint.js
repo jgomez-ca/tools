@@ -138,6 +138,9 @@ function redactEmail(email) {
 
     const expirationInput = document.getElementById("expirationDate");
     const remindersDiv = document.getElementById("reminders");
+    const outputBox = document.getElementById("outputBox");
+    const generateBtn = document.getElementById("generateText");
+    const copyBtn = document.getElementById("copyText");
 
     // Create the checkbox rows
     reminderOffsets.forEach(days => {
@@ -154,6 +157,12 @@ function redactEmail(email) {
 
         remindersDiv.appendChild(row);
     });
+
+    // Format date as Month DD, YYYY
+    function formatDate(date) {
+        const options = { month: "long", day: "2-digit", year: "numeric" };
+        return date.toLocaleDateString("en-US", options);
+    }
 
     // Update reminder dates when expiration date changes
     expirationInput.addEventListener("change", updateDates);
@@ -188,3 +197,33 @@ function redactEmail(email) {
             }
         });
     }
+     // Generate raw text output for email
+    generateBtn.addEventListener("click", () => {
+        const expDateValue = expirationInput.value;
+        if (!expDateValue) {
+            outputBox.value = "Please select an expiration date first.";
+            return;
+        }
+
+        const expDate = new Date(expDateValue);
+        let textOutput = "";
+
+        document.querySelectorAll(".reminder-check").forEach(checkbox => {
+            if (checkbox.checked) {
+                const days = parseInt(checkbox.dataset.days);
+                const reminderDate = new Date(expDate);
+                reminderDate.setDate(reminderDate.getDate() - days);
+
+                textOutput += `- ${days} days before: ${formatDate(reminderDate)}\n`;
+            }
+        });
+
+        outputBox.value = textOutput.trim();
+    });
+
+    // Copy to clipboard
+    copyBtn.addEventListener("click", () => {
+        outputBox.select();
+        outputBox.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(outputBox.value);
+    });
